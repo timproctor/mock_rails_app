@@ -27,7 +27,7 @@ describe "A user" do
     end
   end
 
-  xit "rejects improperly formatted email addresses" do
+  it "rejects improperly formatted email addresses" do
     emails = %w[@ user@ @example.com]
     emails.each do |email|
       user = User.new(email: email)
@@ -36,7 +36,7 @@ describe "A user" do
     end
   end
 
-  xit "requires a unique, case insensitive email address" do
+  it "requires a unique, case insensitive email address" do
     user1 = User.create!(user_attributes)
 
     user2 = User.new(email: user1.email.upcase)
