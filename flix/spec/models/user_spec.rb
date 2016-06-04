@@ -44,13 +44,13 @@ describe "A user" do
     expect(user2.errors[:email].first).to eq("has already been taken")
   end
 
-  xit "is valid with example attributes" do
+  it "is valid with example attributes" do
     user = User.new(user_attributes)
 
     expect(user.valid?).to eq(true)
   end
 
-  xit "requires a password" do
+  it "requires a password" do
     user = User.new(password: "")
 
     user.valid?
@@ -58,29 +58,37 @@ describe "A user" do
     expect(user.errors[:password].any?).to eq(true)
   end
 
-  xit "requires a password confirmation when a password is present" do
-    user = User.new(password: "secret", password_confirmation: "")
+  it "requires a password confirmation when a password is present" do
+    user = User.new(password: "super-secret", password_confirmation: "")
 
     user.valid?
 
     expect(user.errors[:password_confirmation].any?).to eq(true)
   end
 
-  xit "requires the password to match the password confirmation" do
-    user = User.new(password: "secret", password_confirmation: "nomatch")
+  it "requires the password to match the password confirmation" do
+    user = User.new(password: "super-secret", password_confirmation: "nomatch")
 
     user.valid?
 
     expect(user.errors[:password_confirmation].first).to eq("doesn't match Password")
   end
 
-  xit "requires a password and matching password confirmation when creating" do
-    user = User.create!(user_attributes(password: "secret", password_confirmation: "secret"))
+  it "requires a password and matching password confirmation when creating" do
+    user = User.create!(user_attributes(password: "super-secret", password_confirmation: "super-secret"))
 
     expect(user.valid?).to eq(true)
   end
 
-  xit "does not require a password when updating" do
+  it "has a password that is at least 10 in length" do
+    user = User.new(user_attributes(password: "secret", password_confirmation: "secret"))
+
+    user.valid?
+
+    expect(user.errors[:password].first).to eq("is too short (minimum is 10 characters)")
+  end
+
+  it "does not require a password when updating" do
     user = User.create!(user_attributes)
 
     user.password = ""
@@ -88,9 +96,10 @@ describe "A user" do
     expect(user.valid?).to eq(true)
   end
 
-  xit "automatically encrypts the password into the password_digest attribute" do
-    user = User.new(password: "secret")
+  it "automatically encrypts the password into the password_digest attribute" do
+    user = User.new(password: "super-secret")
 
     expect(user.password_digest.present?).to eq(true)
   end
+
 end
