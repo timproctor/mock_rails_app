@@ -1,0 +1,23 @@
+<div>
+  <div>
+    <h1>
+      <%= @users.count %> Users Listed
+    </h1>
+    <div>
+      <% @users.each do |user| %>
+
+        <div>
+          <h2>
+            <%= user.name %>
+          </h2>
+          <h3>
+            <%= user.email%>
+          </h3>
+        </div>
+        <div>
+          <%= link_to "Show #{user.name}", user_path(user)%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
