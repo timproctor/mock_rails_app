@@ -1,5 +1,5 @@
 <div>
-  <div>
+  <article id="user">
     <h1>
       <%= @users.count %> Users Listed
     </h1>
@@ -15,9 +15,11 @@
           </h3>
         </div>
         <div>
-          <%= link_to "Show #{user.name}", user_path(user)%>
+          <p>
+            <%= link_to "Show #{user.name}", user_path(user)%>
+          </p>
         </div>
       <% end %>
     </div>
-  </div>
+  </article>
 </div>
