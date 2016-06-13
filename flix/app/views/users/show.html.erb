@@ -4,7 +4,7 @@
       <%= @user.name %>
     </h1>
     <h2>
-      <%= @user.email%>
+      <%= mail_to @user.email, "Email Me", subject: "This is an example email" %>
     </h2>
   </div>
 </div>
