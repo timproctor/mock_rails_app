@@ -1,0 +1,23 @@
+<%= form_for @user, url: {action: "create"} do |f| %>
+  <article>
+    <p>
+      <%= f.label "Your Name is: " %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label "Your e-mail address: " %>
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.label "Your Password is: " %>
+      <%= f.text_field :password %>
+    </p>
+    <p>
+      <%= f.label "Confirm your Password" %>
+      <%= f.text_field :password_confirmation %>
+    </p>
+    <p>
+      <%= f.submit "Create" , class: "button"%>
+    </p>
+  </article>
+<% end %>
