@@ -1,23 +1,30 @@
-<%= form_for @user, url: {action: "create"} do |f| %>
-  <article>
+<header id="content-header">
+  <h1>Sign Up</h1>
+</header>
+
+<%= form_for(@user) do |f| %>
+  <%= render "shared/errors", object: @user %>
+  <fieldset>
+    <ol>
+      <li class="required">
+        <%= f.label :name %>
+        <%= f.text_field :name, size: 40, autofocus: true %>
+      </li>
+      <li class="required">
+        <%= f.label :email %>
+        <%= f.email_field :email, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :password %>
+        <%= f.password_field :password, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation, size: 40 %>
+      </li>
+    </ol>
     <p>
-      <%= f.label "Your Name is: " %>
-      <%= f.text_field :name %>
+      <%= f.submit %>
     </p>
-    <p>
-      <%= f.label "Your e-mail address: " %>
-      <%= f.text_field :email %>
-    </p>
-    <p>
-      <%= f.label "Your Password is: " %>
-      <%= f.text_field :password %>
-    </p>
-    <p>
-      <%= f.label "Confirm your Password" %>
-      <%= f.text_field :password_confirmation %>
-    </p>
-    <p>
-      <%= f.submit "Create" , class: "button"%>
-    </p>
-  </article>
+  </fieldset>
 <% end %>
