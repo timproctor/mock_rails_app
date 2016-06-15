@@ -10,13 +10,13 @@ describe "Creating a new User" do
 
     fill_in "Name", with: "Example User"
     fill_in "Email", with: "user@example.com"
-    fill_in "Password", with: "secret"
-    fill_in "Confirm Password", with: "secret"
+    fill_in "Password", with: "secret1234"
+    fill_in "Confirm Password", with: "secret1234"
 
     click_button "Create Account"
 
     expect(page).to have_text('Example User')
-    expect(page).to have_text("Thanks for signing up!")
+    expect(page).to have_text("Thanks, Example User for signing up!")
 
   end
 
