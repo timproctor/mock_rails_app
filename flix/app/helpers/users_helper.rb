@@ -7,4 +7,5 @@ module UsersHelper
       "#{@users.count}  Users Listed"
     end
   end
+
 end
