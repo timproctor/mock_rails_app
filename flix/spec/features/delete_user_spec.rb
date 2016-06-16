@@ -9,7 +9,7 @@ describe "Delete a user" do
     click_link 'Delete Account'
 
     expect(current_path).to eq(root_path)
-    expect (page).to have_text('Account successfully deleted!')
+    expect(page).to have_text('Account successfully deleted!')
 
     visit users_path
 
