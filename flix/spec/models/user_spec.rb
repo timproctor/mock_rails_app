@@ -18,6 +18,14 @@ describe "A user" do
     expect(user.errors[:email].any?).to eq(true)
   end
 
+  it "requires a username" do
+    user = User.new(username: "")
+
+    user.valid?
+
+    expect(user.errors[:username].any?).to eq(true)
+  end
+
   it "accepts properly formatted email addresses" do
     emails = %w[user@example.com first.last@example.com]
     emails.each do |email|
