@@ -9,6 +9,7 @@ describe "Viewing a user's profile page" do
 
     expect(page).to have_text(user.name)
     expect(page).to have_text(user.email)
+    expect(page).to have_text(user.username)
   end
 
   it "shows the user as a member since" do
@@ -18,5 +19,6 @@ describe "Viewing a user's profile page" do
 
     expect(page).to have_text("June, 2016")
   end
+
 
 end
