@@ -16,7 +16,7 @@ describe "Viewing a user's profile page" do
 
     visit user_url(user)
 
-    expect(page).to have_text("January 2016")
+    expect(page).to have_text("June, 2016")
   end
 
 end
