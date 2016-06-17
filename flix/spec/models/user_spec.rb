@@ -34,6 +34,14 @@ describe "A user" do
     expect(user2.errors[:username].first).to eq("has already been taken")
   end
 
+  it "requires a username to have alphanumeric characters" do
+    user = User.new(username: "!sk")
+
+    user.valid?
+
+    expect(user.errors[:username].any?).to eq(true)
+  end
+
   it "accepts properly formatted email addresses" do
     emails = %w[user@example.com first.last@example.com]
     emails.each do |email|
