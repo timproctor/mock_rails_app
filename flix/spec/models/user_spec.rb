@@ -31,7 +31,7 @@ describe "A user" do
 
     user2 = User.new(username: user1.username.upcase)
     user2.valid?
-    expect(user2.errors[:email].first).to eq("has already been taken")
+    expect(user2.errors[:username].first).to eq("has already been taken")
   end
 
   it "accepts properly formatted email addresses" do
